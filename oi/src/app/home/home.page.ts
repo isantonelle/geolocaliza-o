@@ -35,24 +35,32 @@ export class HomePage implements OnInit{
     Leaflet.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(this.mapa)
 
     Leaflet.circle([lat, lng], {
-      color: 'red',
-      fillColor: '#f03',
-      fillOpacity: 0.4,
-      radius: 500
-  }).addTo(this.mapa).bindPopup("Local com muito roubo. Cuidado!");
+        color: 'red',
+        fillColor: '#f03',
+        fillOpacity: 0.4,
+        radius: 500
+    }).addTo(this.mapa).bindPopup("Local com muito roubo. Cuidado!");
 
-  Leaflet.circle([-23.93228, -46.33307], {
-    color: 'blue',
-    fillColor: '#00f',
+    Leaflet.circle([-23.93228, -46.33307], {
+      color: 'blue',
+      fillColor: '#00f',
+      fillOpacity: 0.4,
+      radius: 100
+    }).addTo(this.mapa).bindPopup("Circo por perto. Aproveite!");
+
+    Leaflet.circle([-23.94887, -46.28032], {
+    color: 'yellow',
+    fillColor: '#f5e642',
     fillOpacity: 0.4,
     radius: 100
-}).addTo(this.mapa).bindPopup("Circo por perto. Aproveite!");
+    }).addTo(this.mapa).bindPopup("Isabelly mora por perto");
 
-Leaflet.circle([-23.94887, -46.28032], {
-  color: 'yellow',
-  fillColor: '#f5e642',
-  fillOpacity: 0.4,
-  radius: 100
-}).addTo(this.mapa).bindPopup("Isabelly mora por perto");
+    const ondeEstou = Leaflet.icon({
+      iconUrl: "../../assets/marcador.png",
+      iconSize:[32,50],
+      popupAnchor: [0,-35] 
+    })
+
+    Leaflet.marker({lat: lat, lng: lng}, {icon: ondeEstou}).addTo(this.mapa).bindPopup("Estou aqui!")
   }
 }
